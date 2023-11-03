@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        function convertToUSD() {
-            var originalCurrency = document.getElementById('originalCurrency').value;
-            var originalAmount = parseFloat(document.getElementById('originalAmount').value);
-            var resultMessage = document.getElementById('result');
-            var usdEquivalent = 0;
-
-            // Define conversion rates for different currencies
-            var conversionRates = {
-                'USD': 1,        // 1 USD = 1 USD
-                'EUR': 1.07,    // 1 USD = 1.07 EUR (Example rate)
-                'GBP': 0.81,   // 1 USD = 0.81 GBP (Example rate)
-                // Add more currencies and rates as needed
-            };
-
-            if (conversionRates[originalCurrency]) {
-                usdEquivalent = originalAmount / conversionRates[originalCurrency];
-                resultMessage.textContent = originalAmount + ' ' + originalCurrency + ' is approximately ' + usdEquivalent.toFixed(2) + ' USD.';
-            } else {
-                resultMessage.textContent = 'Currency not supported.';
-            }
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
         }
-    </script>
+        
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h2>Hour Tracker</h2>
+    <h2>Financial Table</h2>
     <table>
         <tr>
-            <td>Original Currency:</td>
-            <td>
-                <select id="originalCurrency">
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <!-- Add more currencies as needed -->
-                </select>
-            </td>
+            <th>Scope</th>
+            <th>Original Budget (GBP)</th>
+            <th>Conversion (USD)</th>
+            <th>Plan Hours (Production)</th>
         </tr>
         <tr>
-            <td>Original Amount:</td>
-            <td><input type="number" id="originalAmount"></td>
+            <td>Scope</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Investment From X</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Investment From TG</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
-
-    <button type="button" onclick="convertToUSD()">Convert to USD</button>
-
-    <p id="result"></p>
 </body>
 </html>
