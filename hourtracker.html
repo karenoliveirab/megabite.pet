@@ -2,29 +2,53 @@
 <html>
 <head>
     <script>
-        function checkAnswer() {
-            var selectedCurrency = document.querySelector('input[name="currency"]:checked').value;
+        function convertToUSD() {
+            var originalCurrency = document.getElementById('originalCurrency').value;
+            var originalAmount = parseFloat(document.getElementById('originalAmount').value);
             var resultMessage = document.getElementById('result');
-            
-            if (selectedCurrency === 'dollar') {
-                resultMessage.textContent = 'Correct! The currency of the United States is the Dollar.';
+            var usdEquivalent = 0;
+
+            // Define conversion rates for different currencies
+            var conversionRates = {
+                'usd': 1,        // 1 USD = 1 USD
+                'euro': 1.18,    // 1 USD = 1.18 Euros (Example rate)
+                'yen': 0.0091,   // 1 USD = 0.0091 Yen (Example rate)
+                'peso': 0.049    // 1 USD = 0.049 Pesos (Example rate)
+                // Add more currencies and rates as needed
+            };
+
+            if (conversionRates[originalCurrency]) {
+                usdEquivalent = originalAmount / conversionRates[originalCurrency];
+                resultMessage.textContent = originalAmount + ' ' + originalCurrency + ' is approximately ' + usdEquivalent.toFixed(2) + ' USD.';
             } else {
-                resultMessage.textContent = 'Sorry, that's incorrect.';
+                resultMessage.textContent = 'Currency not supported.';
             }
         }
     </script>
 </head>
 <body>
-    <h2>Multiple Choice: Currency</h2>
-    <form>
-        <p>What is the currency of the United States?</p>
-        <input type="radio" name="currency" value="dollar"> Dollar<br>
-        <input type="radio" name="currency" value="euro"> Euro<br>
-        <input type="radio" name="currency" value="yen"> Yen<br>
-        <input type="radio" name="currency" value="peso"> Peso<br>
+    <h2>Currency Converter</h2>
+    <table>
+        <tr>
+            <td>Original Currency:</td>
+            <td>
+                <select id="originalCurrency">
+                    <option value="usd">USD</option>
+                    <option value="euro">Euro</option>
+                    <option value="yen">Yen</option>
+                    <option value="peso">Peso</option>
+                    <!-- Add more currencies as needed -->
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Original Amount:</td>
+            <td><input type="number" id="originalAmount"></td>
+        </tr>
+    </table>
 
-        <button type="button" onclick="checkAnswer()">Submit</button>
-    </form>
+    <button type="button" onclick="convertToUSD()">Convert to USD</button>
+
     <p id="result"></p>
 </body>
 </html>
