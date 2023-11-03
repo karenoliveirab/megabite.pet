@@ -1,0 +1,4 @@
+.text-container {
+    margin: 20px; /* or padding: 20px; */
+    border: 1px solid #000; /* Optional: Add a border to the container */
+}
