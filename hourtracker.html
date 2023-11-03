@@ -10,10 +10,9 @@
 
             // Define conversion rates for different currencies
             var conversionRates = {
-                'usd': 1,        // 1 USD = 1 USD
-                'euro': 1.18,    // 1 USD = 1.18 Euros (Example rate)
-                'yen': 0.0091,   // 1 USD = 0.0091 Yen (Example rate)
-                'peso': 0.049    // 1 USD = 0.049 Pesos (Example rate)
+                'USD': 1,        // 1 USD = 1 USD
+                'EUR': 1.18,    // 1 USD = 1.18 EUR (Example rate)
+                'GBP': 0.81,   // 1 USD = 0.81 GBP (Example rate)
                 // Add more currencies and rates as needed
             };
 
@@ -27,16 +26,15 @@
     </script>
 </head>
 <body>
-    <h2>Currency Converter</h2>
+    <h2>Hour Tracker</h2>
     <table>
         <tr>
             <td>Original Currency:</td>
             <td>
                 <select id="originalCurrency">
-                    <option value="usd">USD</option>
-                    <option value="euro">Euro</option>
-                    <option value="yen">Yen</option>
-                    <option value="peso">Peso</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
                     <!-- Add more currencies as needed -->
                 </select>
             </td>
