@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="hourtrackerstyle.css">
+    <script>
+        function checkAnswer() {
+            var selectedCurrency = document.querySelector('input[name="currency"]:checked').value;
+            var resultMessage = document.getElementById('result');
+            
+            if (selectedCurrency === 'dollar') {
+                resultMessage.textContent = 'Correct! The currency of the United States is the Dollar.';
+            } else {
+                resultMessage.textContent = 'Sorry, that's incorrect.';
+            }
+        }
+    </script>
 </head>
 <body>
-    <div class="text-container">
-        <p>Hello World Just Testing</p>
-    </div>
+    <h2>Multiple Choice: Currency</h2>
+    <form>
+        <p>What is the currency of the United States?</p>
+        <input type="radio" name="currency" value="dollar"> Dollar<br>
+        <input type="radio" name="currency" value="euro"> Euro<br>
+        <input type="radio" name="currency" value="yen"> Yen<br>
+        <input type="radio" name="currency" value="peso"> Peso<br>
+
+        <button type="button" onclick="checkAnswer()">Submit</button>
+    </form>
+    <p id="result"></p>
 </body>
 </html>
