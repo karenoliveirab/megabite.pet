@@ -16,7 +16,7 @@
 
         input {
             width: 100%;
-            text-align: center; /* Center-align the text within input fields */
+            text-align: center;
         }
     </style>
 
@@ -32,14 +32,36 @@
 
             totalCell.textContent = sum.toFixed(2);
         }
+        
+        function changeCurrency() {
+            var currencySelect = document.getElementById('currencySelect');
+            var currency = currencySelect.value;
+
+            // Change the text in the "Original Budget" column
+            var budgetHeaders = document.getElementsByName('budget_header');
+            for (var i = 0; i < budgetHeaders.length; i++) {
+                budgetHeaders[i].textContent = 'Original Budget (' + currency + ')';
+            }
+            
+            // Recalculate the total
+            calculateTotal();
+        }
     </script>
 </head>
 <body>
     <h2>Hour Tracker</h2>
+    
+    <label for="currencySelect">Select Currency: </label>
+    <select id="currencySelect" onchange="changeCurrency()">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+    </select>
+    
     <table>
         <tr>
             <th>Scope</th>
-            <th>Original Budget (GBP)</th>
+            <th name="budget_header">Original Budget (USD)</th>
             <th>Conversion (USD)</th>
             <th>Plan Hours (Production)</th>
         </tr>
@@ -64,4 +86,5 @@
     </table>
 </body>
 </html>
+
 
