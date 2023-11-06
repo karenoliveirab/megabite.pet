@@ -11,6 +11,11 @@
             border: 1px solid black;
             padding: 8px;
             text-align: center;
+            width: 25%; /* Equal width for all columns */
+        }
+
+        input {
+            width: 100%; /* Make the input fields fill their respective columns */
         }
     </style>
 </head>
@@ -22,12 +27,6 @@
             <th>Original Budget (GBP)</th>
             <th>Conversion (USD)</th>
             <th>Plan Hours (Production)</th>
-        </tr>
-        <tr>
-            <td>Scope</td>
-            <td><input type="text" name="budget_gbp_1" id="budget_gbp_1"></td>
-            <td></td>
-            <td></td>
         </tr>
         <tr>
             <td>Investment From X</td>
@@ -50,3 +49,4 @@
     </table>
 </body>
 </html>
+
