@@ -23,9 +23,8 @@
             margin-bottom: 12px;
         }
         
-        /* Add margin between the dropdown and the table */
         #currencySelect, table {
-            margin-top: 12px; /* You can adjust the margin value as needed */
+            margin-top: 12px;
         }
     </style>
 
@@ -48,7 +47,8 @@
 
             var budgetHeaders = document.getElementsByName('budget_header');
             for (var i = 0; i < budgetHeaders.length; i++) {
-                budgetHeaders[i].textContent = 'Original Budget (' + currency + ')';
+                // Remove the text after "Original Budget"
+                budgetHeaders[i].textContent = 'Original Budget';
             }
             
             calculateTotal();
@@ -58,7 +58,6 @@
 <body>
     <h2>Hour Tracker</h2>
     
-    <!-- Add margin to the dropdown and the table -->
     <div id="currencySelect">
         <label for="currencySelect">Select Currency: </label>
         <select id="currencySelect" onchange="changeCurrency()">
@@ -71,7 +70,7 @@
     <table>
         <tr>
             <th>Scope</th>
-            <th name="budget_header">Original Budget (USD)</th>
+            <th name="budget_header">Original Budget</th>
             <th>Conversion (USD)</th>
             <th>Plan Hours (Production)</th>
         </tr>
@@ -96,6 +95,7 @@
     </table>
 </body>
 </html>
+
 
 
 
