@@ -11,12 +11,21 @@
             border: 1px solid black;
             padding: 8px;
             text-align: center;
-            width: 25%;
+            width: 25px;
         }
 
         input {
             width: 100%;
             text-align: center;
+        }
+
+        tr {
+            margin-bottom: 12px;
+        }
+        
+        /* Add margin between the dropdown and the table */
+        #currencySelect, table {
+            margin-top: 12px; /* You can adjust the margin value as needed */
         }
     </style>
 
@@ -37,13 +46,11 @@
             var currencySelect = document.getElementById('currencySelect');
             var currency = currencySelect.value;
 
-            // Change the text in the "Original Budget" column
             var budgetHeaders = document.getElementsByName('budget_header');
             for (var i = 0; i < budgetHeaders.length; i++) {
                 budgetHeaders[i].textContent = 'Original Budget (' + currency + ')';
             }
             
-            // Recalculate the total
             calculateTotal();
         }
     </script>
@@ -51,12 +58,15 @@
 <body>
     <h2>Hour Tracker</h2>
     
-    <label for="currencySelect">Select Currency: </label>
-    <select id="currencySelect" onchange="changeCurrency()">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-    </select>
+    <!-- Add margin to the dropdown and the table -->
+    <div id="currencySelect">
+        <label for="currencySelect">Select Currency: </label>
+        <select id="currencySelect" onchange="changeCurrency()">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+        </select>
+    </div>
     
     <table>
         <tr>
@@ -86,5 +96,6 @@
     </table>
 </body>
 </html>
+
 
 
