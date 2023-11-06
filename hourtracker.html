@@ -22,7 +22,7 @@
         tr {
             margin-bottom: 12px;
         }
-        
+
         #currencySelect, table {
             margin-top: 12px;
         }
@@ -32,23 +32,44 @@
         function calculateTotal() {
             var budgetCells = document.getElementsByName('budget_gbp');
             var totalCell = document.getElementById('budget_gbp_total');
+            var currencySelect = document.getElementById('currencySelect');
+            var currency = currencySelect.value;
 
             var sum = 0;
             for (var i = 0; i < budgetCells.length; i++) {
-                sum += parseFloat(budgetCells[i].value) || 0;
+                // Convert the values to USD based on the selected currency
+                var rate = getConversionRate(currency);
+                sum += (parseFloat(budgetCells[i].value) || 0) / rate;
             }
 
             totalCell.textContent = sum.toFixed(2);
         }
-        
+
+        function getConversionRate(currency) {
+            // Add conversion rates for EUR and GBP as needed
+            // For demonstration, let's assume 1 USD = 1 for EUR and 1.3 for GBP
+            var conversionRates = {
+                'USD': 1,
+                'EUR': 1,
+                'GBP': 1.3
+            };
+            return conversionRates[currency] || 1;
+        }
+
         function changeCurrency() {
             var currencySelect = document.getElementById('currencySelect');
             var currency = currencySelect.value;
-
             var budgetHeaders = document.getElementsByName('budget_header');
             for (var i = 0; i < budgetHeaders.length; i++) {
-                // Remove the text after "Original Budget"
                 budgetHeaders[i].textContent = 'Original Budget';
+            }
+            
+            // Convert and update the "Conversion (USD)" column
+            var budgetCells = document.getElementsByName('budget_gbp');
+            var conversionCells = document.getElementsByName('conversion_usd');
+            for (var i = 0; i < budgetCells.length; i++) {
+                var rate = getConversionRate(currency);
+                conversionCells[i].textContent = (parseFloat(budgetCells[i].value) || 0) / rate;
             }
             
             calculateTotal();
@@ -77,13 +98,13 @@
         <tr>
             <td>Investment From X</td>
             <td><input type="text" name="budget_gbp" id="budget_gbp_2" oninput="calculateTotal()"></td>
-            <td></td>
+            <td name="conversion_usd"></td>
             <td></td>
         </tr>
         <tr>
             <td>Investment From TG</td>
             <td><input type="text" name="budget_gbp" id="budget_gbp_3" oninput="calculateTotal()"></td>
-            <td></td>
+            <td name="conversion_usd"></td>
             <td></td>
         </tr>
         <tr>
@@ -95,6 +116,7 @@
     </table>
 </body>
 </html>
+
 
 
 
