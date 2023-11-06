@@ -18,9 +18,23 @@
             width: 100%;
         }
     </style>
+
+    <script>
+        function calculateTotal() {
+            var budgetCells = document.getElementsByName('budget_gbp');
+            var totalCell = document.getElementById('budget_gbp_total');
+
+            var sum = 0;
+            for (var i = 0; i < budgetCells.length; i++) {
+                sum += parseFloat(budgetCells[i].value) || 0;
+            }
+
+            totalCell.textContent = sum.toFixed(2);
+        }
+    </script>
 </head>
 <body>
-    <h2>Hour Tracker</h2> <!-- Changed the heading here -->
+    <h2>Hour Tracker</h2>
     <table>
         <tr>
             <th>Scope</th>
@@ -30,24 +44,22 @@
         </tr>
         <tr>
             <td>Investment From X</td>
-            <td><input type="text" name="budget_gbp_2" id="budget_gbp_2"></td>
+            <td><input type="text" name="budget_gbp" id="budget_gbp_2" oninput="calculateTotal()"></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td>Investment From TG</td>
-            <td><input type="text" name="budget_gbp_3" id="budget_gbp_3"></td>
+            <td><input type="text" name="budget_gbp" id="budget_gbp_3" oninput="calculateTotal()"></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td>Total</td>
-            <td><input type="text" name="budget_gbp_total" id="budget_gbp_total"></td>
+            <td id="budget_gbp_total">0.00</td>
             <td></td>
             <td></td>
         </tr>
     </table>
 </body>
 </html>
-
-
